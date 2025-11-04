@@ -6,21 +6,41 @@
 <h5>{{GetFullName()}}</h5>
 <h5>Il risultato di 27 al quadrato vale: {{ 27 * 27 }}</h5>
 
-<br>
-
-<h3 style="color: blueviolet">Events Binding Samples</h3>
+<h3 style="color: blueviolet;">Events Binding Samples</h3>
 <button (click)="btnCliccami('Gabriel')">Cliccami</button>
+
 <input type="text" (input)="InputChange($event)" />
 <form (submit)="onSubmit($event)">
-<input type="text" placeholder="Inserire indirizzo" />
-<button type="submit">Invia</button>
+  <input type="text" placeholder="Inserire indirizzo" />
+  <button type="submit">Invia</button>
 </form>
 
-<br>
+<h3 style="color: blueviolet;">Properties Binding Samples</h3>
+<h4 [style]="myStyle">Binding della a proprietà Style</h4>
+<h5 [style.color]="hColor" [style.fontSize]="hFontSize">Multi properties binding</h5>
+<button [disabled]="btnDisabled">Sono disabilitato</button>
 
-<h3>Properties Binding Samples</h3>
-<h1 [style]="myStyle">Binding della proprietà Style</h1>
-<button [disabled]="btnDisabled">Sono disabile</button>
+
+
+<div [class.myDiv]="isMyDivActive" style="border: 10px solid transparent;">
+  Sono un DIV
+  ciao come stai?
+  <button (click)="isMyDivActive = !isMyDivActive" >ToggleActive</button>
+</div>
+
+<h3 style="color: blueviolet;">Two Way Binding</h3>
+<input type="text" [(ngModel)]="Fullname" />
+<p>Il tuo nome è: {{ Fullname }}</p>
+
+<label>
+  <input type="checkbox" [(ngModel)]="isChecked" />
+  Accetto i termini e le conpdizioni del contratto
+</label>
+<p>Hai accettato i termini: {{ isChecked }}</p>
 <br>
-<h3 style="color: blueviolet;">Two Ways Binding</h3>
-<router-outlet />
+<select [(ngModel)]="selectedOption">
+  <option value="red">Rosso</option>
+  <option value="green">Verde</option>
+  <option value="blue">Blu</option>
+</select>
+<router-outlet></router-outlet>
