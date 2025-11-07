@@ -1,0 +1,34 @@
+<!-- <div>
+    <nav>
+        <ul>
+        <li><a routerLink="/counter">Counter Parent Component</a></li>
+        <li><a routerLink="/counterchild">Counter Child Component</a></li>
+        <li><a routerLink="/parent">Parent Component</a></li>
+        </ul>
+    </nav>
+</div> -->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/counter">Counter Parent Component</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/counterchild">Counter Child Component</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/parent">Parent Component</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/customers">Customer Component</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

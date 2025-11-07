@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { ChildComponent } from '../child-component/child-component';
 
 @Component({
-  selector: 'parent-component',
-  standalone: true,
+  selector: 'app-parent-component',
+  imports: [ChildComponent],
   templateUrl: './parent-component.html',
-  styleUrls: ['./parent-component.css'],
+  styleUrl: './parent-component.css',
 })
-
 export class ParentComponent {
-    
+parentName = 'Claudio Orloffoooooooooooooooooooooooooooooo';
 }

@@ -1,0 +1,9 @@
+<p>customer works!</p>
+<button (click)="GetCompleteCustomers()">Ottieni Clienti</button>
+<!-- <br>
+<p>{{ customersData | json }}</p> -->
+<br>
+<ul>
+  <li *ngFor="let cust of customersData">
+    {{ cust.firstName }} - {{ cust.lastName }}
+  </li>
