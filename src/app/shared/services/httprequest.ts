@@ -15,5 +15,9 @@ export class Httprequest {
   GetCustomerDetail(id: number): Observable<any> {
     return this.http.get(`https://localhost:7238/api/Customers/${id}`);
   }
+
+  PostLogin(credentials: Credentials): Observable<any> {
+        return this.http.post(`https://localhost:7238/api/Login`, credentials);
+  }
 }
 
