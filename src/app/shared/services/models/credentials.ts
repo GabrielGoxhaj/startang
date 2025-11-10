@@ -1,8 +1,8 @@
-class Credentials {
-    usr: string;
-    pwd: string;
-    constructor(username: string, password: string){
-        this.usr = username;
-        this.pwd = password
+export class Credentials {
+    username: string;
+    password: string;
+    constructor(username: string, password: string) {
+        this.username = username;
+        this.password = password;
     }
 }
