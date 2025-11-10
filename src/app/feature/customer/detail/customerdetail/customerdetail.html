@@ -1,0 +1,29 @@
+<h3 style="color: brown;">Gestione CRUD Cliente</h3>
+<!-- <div style="border: 3px;">
+    <label id="customerId"></label>
+    <label for="">Nome</label>
+    <input type="text" id="firstName" [value]="customDetail.firstName" />
+    <label for="">Cognome</label>
+    <input type="text" id="LastName" [value]="customDetail.lastName" />
+    <label for="">Email</label>
+    <input type="email" id="email" [value]="customDetail.emailAddress" width="2000px"/>
+</div> -->
+<br>
+
+<!-- <pre>
+Customer ID: {{ customDetail.customerId }}
+<hr>
+form customer valido?: {{customerForm.valid}}
+form customer sporco?: {{customerForm.dirty}}
+form customer toccato?: {{customerForm.touched}}
+</pre> -->
+
+<div *ngIf="name.dirty">
+<p style="color: brown;" *ngIf="name.errors?.['minlength']">Il nome deve essere almeno di tre caratteri</p>
+    </div>
+    <form #customerForm="ngForm" (submit)="UpdateCustomer(customerForm)">
+        <label for="">Nome</label>
+        <input type="text" name="firstName" #name="ngModel" [(ngModel)]="customDetail.firstName" required minlength="3"
+            maxlength="35" />
+        <button type="submit" [disabled]="!customerForm.valid">Salva Modifiche</button>
+    </form>
