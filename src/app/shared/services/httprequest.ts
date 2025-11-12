@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Credentials } from './models/credentials';
+import { Auth } from './auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Httprequest {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth: Auth) { }
 
   GetCust(): Observable<any> {
-    return this.http.get('https://localhost:7238/api/Customers');
+    return this.http.get('https://localhost:7238/api/Customers', { headers: this.auth.authenticationJwtHeader });
   }
 
   GetCustomerDetail(id: number): Observable<any> {
@@ -17,7 +19,6 @@ export class Httprequest {
   }
 
   PostLogin(credentials: Credentials): Observable<any> {
-        return this.http.post(`https://localhost:7238/api/Login`, credentials);
+    return this.http.post('https://localhost:7238/api/login', credentials  ,{ observe: 'response' });
   }
 }
-

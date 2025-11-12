@@ -16,7 +16,7 @@ export class Login {
   jwtToken: any;
   jwtTokenPayload: any;
 
-  constructor(private http: Httprequest,private auth: Auth) { }
+  constructor(private http: Httprequest, private auth: Auth) { }
   LoginBE(usr: HTMLInputElement, pwd: HTMLInputElement) {
     if (usr.value != "" && pwd.value != "") {
       this.credentials.username = usr.value;
@@ -27,15 +27,15 @@ export class Login {
           switch (response.status) {
             case HttpStatusCode.Ok:
               console.log('Login successful:', response);
-              this.jwtToken = response.token;
+              this.jwtToken = response.body?.token;
               this.jwtTokenPayload = jwt_decode.jwtDecode(this.jwtToken);
-              this.auth.SetJwtInfo(true,this.jwtToken);
-              // console.log('Decoded JWT payload:', this.jwtTokenPayload);
-              // console.log('User ID from token:', this.jwtTokenPayload.userId);
-              // console.log('Username from token:', this.jwtTokenPayload.unique_name);
-              // console.log('Expiration from token:', this.jwtTokenPayload.exp);
-              // console.log('Issuer from token:', this.jwtTokenPayload.iss);
-              // console.log('Audience from token:', this.jwtTokenPayload.aud);
+              this.auth.SetJwtInfo(true, this.jwtToken);
+              console.log('Decoded JWT payload:', this.jwtTokenPayload);
+              console.log('User ID from token:', this.jwtTokenPayload.userId);
+              console.log('Username from token:', this.jwtTokenPayload.unique_name);
+              console.log('Expiration from token:', this.jwtTokenPayload.exp);
+              console.log('Issuer from token:', this.jwtTokenPayload.iss);
+              console.log('Audience from token:', this.jwtTokenPayload.aud);
               break;
             case HttpStatusCode.Unauthorized:
               console.error('Login failed: Unauthorized');

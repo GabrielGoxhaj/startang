@@ -1,3 +1,5 @@
+
+
 <h3 style="color: blueviolet;">[Binding] Interpolation String Samples</h3>
 <h5>Hello, {{ title() }}</h5>
 <h5>{{ ciclilavarizia }}</h5>
@@ -6,7 +8,7 @@
 <h5>Il risultato di 27 al quadrato vale: {{ 27 * 27 }}</h5>
 <br>
 <h3 style="color: blueviolet;">Events Binding Samples</h3>
-<button (click)="btnCliccami('Gabriel')">Cliccami</button>
+<button (click)="btnCliccami('Claudio')">Cliccami</button>
 <app-parent-component></app-parent-component>
 <input type="text" (input)="InputChange($event)"/>
 <form (submit)="onSubmit($event)">
@@ -36,7 +38,7 @@ Accetto i termini e il contratto
 </label>
 <p>Hai accettato i termini: {{ isChecked }}</p>
 <br>
-<select [(ngModel)]="selectedOption">
+<select [(ngModel)]="selectedOption" name="optColor" title="Scegli COlor">
   <option value="red">Rosso</option>
   <option value="Verde">Verde</option>
   <option value="Blu">Blu</option>
