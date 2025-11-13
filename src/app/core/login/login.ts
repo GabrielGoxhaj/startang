@@ -4,6 +4,7 @@ import { Credentials } from '../../shared/services/models/credentials';
 import * as jwt_decode from 'jwt-decode';
 import { HttpStatusCode } from '@angular/common/http';
 import { Auth } from '../../shared/services/auth';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,9 @@ export class Login {
   credentials: Credentials = new Credentials('', '');
   jwtToken: any;
   jwtTokenPayload: any;
-
-  constructor(private http: Httprequest, private auth: Auth) { }
+  flashMessage: string = '';
+credentialsReturn: Credentials = new Credentials('', '');
+  constructor(private http: Httprequest, private auth: Auth, private cookies: CookieService) { }
   LoginBE(usr: HTMLInputElement, pwd: HTMLInputElement) {
     if (usr.value != "" && pwd.value != "") {
       this.credentials.username = usr.value;
@@ -27,6 +29,14 @@ export class Login {
           switch (response.status) {
             case HttpStatusCode.Ok:
               console.log('Login successful:', response);
+              this.flashMessage = this.cookies.get('flashMessage');
+              this.credentialsReturn.username = 
+              JSON.parse(this.cookies.get('flashMessage')).username;
+              this.credentialsReturn.password = 
+              JSON.parse(this.cookies.get('flashMessage')).password;
+              console.log('Credentials from cookie:', this.credentialsReturn);
+              console.log('Flash Message from cookie:', this.flashMessage);
+              this.cookies.delete('flashMessage');
               this.jwtToken = response.body?.token;
               this.jwtTokenPayload = jwt_decode.jwtDecode(this.jwtToken);
               this.auth.SetJwtInfo(true, this.jwtToken);
